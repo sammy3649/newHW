@@ -19,23 +19,23 @@ public class CalculatorController {
         return "<h1>Добро пожаловать в калькулятор</h1>";
     }
 
-    @GetMapping(name = "/plus", params = {"num1", "num2"})
+    @GetMapping( "/plus")
     public String sumNum(@RequestParam int num1, @RequestParam int num2, @RequestParam int num3) {
         int total = calculatorService.sum(num1, num2) + num3;
         return generateMessage(num1, num2, '+', total);
     }
 
-    @GetMapping(name = "/minus")
+    @GetMapping( "/minus")
     public String subtractionNum(@RequestParam int num1, @RequestParam int num2) {
         int total = calculatorService.subtraction(num1, num2);
         return generateMessage(num1, num2, '-', total);
     }
-    @GetMapping(name = "/multiplication")
+    @GetMapping( "/multiplication")
     public String multiplicationNu (@RequestParam int num1, @RequestParam int num2) {
         int total = calculatorService.multiplication(num1, num2);
         return generateMessage(num1, num2, '*', total);
     }
-    @GetMapping(name = "/divide")
+    @GetMapping("/divide")
     public String divideNum(@RequestParam int num1, @RequestParam int num2) {
         if (num2 == 0) {
             return "<h1>Делить на 0 нельзя!</h1>";
