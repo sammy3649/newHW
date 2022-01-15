@@ -17,8 +17,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee add(String firstName, String lastName) {
-        Employee employee1 = new Employee(firstName, lastName);
+    public Employee add(String firstName, String lastName, int department, int salary, int departmentId) {
+        Employee employee1 = new Employee(firstName, lastName, department, salary, departmentId);
         return add(employee1);
     }
 
