@@ -1,5 +1,6 @@
 package pro.sky.java.course2.newhw.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.newhw.exception.EmployeeExistException;
 import pro.sky.java.course2.newhw.exception.EmployeeNotFoundExemption;
@@ -58,7 +59,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return employee;
     }
-
+    @Override
+    public String check(String firstName, String lastName) {
+            boolean employee = StringUtils.isNumeric(getKey(firstName, lastName)) || StringUtils.isWhitespace(getKey(firstName, lastName));
+        if (employee == true) {
+            throw new EmployeeNotFoundExemption();}
+        return StringUtils.capitalize(getKey(firstName, lastName));
+    }
     @Override
     public Collection<Employee> getAll() {
         return Set.copyOf(employees.values());
@@ -71,4 +78,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private String getKey(String firstName, String lastName) {
         return firstName + lastName;
     }
+
+
 }
