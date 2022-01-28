@@ -2,6 +2,7 @@ package pro.sky.java.course2.newhw.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import pro.sky.java.course2.newhw.exception.EmployeeBadNameException;
 import pro.sky.java.course2.newhw.exception.EmployeeExistException;
 import pro.sky.java.course2.newhw.exception.EmployeeNotFoundExemption;
 import pro.sky.java.course2.newhw.model.Employee;
@@ -20,6 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee add(String firstName, String lastName) {
         Employee employee1 = new Employee(firstName, lastName);
+        String checkName = check(firstName, lastName);
         return add(employee1);
     }
 
@@ -36,6 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee remove(String firstName, String lastName) {
         Employee employee1 = new Employee(firstName, lastName);
+        String checkName = check(firstName, lastName);
         return remove(employee1);
     }
 
@@ -53,17 +56,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee find(String firstName, String lastName) {
         String key = getKey(firstName, lastName);
+        String checkName = check(firstName, lastName);
         Employee employee = employees.get(key);
         if (employee == null) {
             throw new EmployeeNotFoundExemption();
         }
         return employee;
     }
-    @Override
-    public String check(String firstName, String lastName) {
+    private String check(String firstName, String lastName) {
             boolean employee = StringUtils.isNumeric(getKey(firstName, lastName)) || StringUtils.isWhitespace(getKey(firstName, lastName));
         if (employee == true) {
-            throw new EmployeeNotFoundExemption();}
+            throw new EmployeeBadNameException();}
         return StringUtils.capitalize(getKey(firstName, lastName));
     }
     @Override
