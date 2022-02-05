@@ -47,9 +47,9 @@ public class EmployeeServiceImplTest {
     @Test
     public void removeTest() {
         out.add(FIRST_NAME, LAST_NAME, DEPARTMENT, SALARY, DEPARTMENT_ID);
-        Employee testEmployee = out.remove(FIRST_NAME, LAST_NAME);
-        Employee testEmployee1 = new Employee(FIRST_NAME, LAST_NAME, DEPARTMENT, SALARY, DEPARTMENT_ID);
-        assertEquals(testEmployee1, testEmployee);
+        Employee actual = out.remove(FIRST_NAME, LAST_NAME);
+        Employee expected = new Employee(FIRST_NAME, LAST_NAME, DEPARTMENT, SALARY, DEPARTMENT_ID);
+        assertEquals(expected, actual);
     }
 
     @Test

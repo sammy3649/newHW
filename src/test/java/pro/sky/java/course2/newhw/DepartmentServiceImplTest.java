@@ -39,7 +39,7 @@ public class DepartmentServiceImplTest {
     @Test
     public void getEmployeeMaxSumTest() {
         Employee actual = out.getEmployeeMaxSum(DEPARTMENT);
-        Employee expected = new Employee(FIRST_NAME, LAST_NAME, DEPARTMENT, SALARY, DEPARTMENT_ID);
+        Employee expected = new Employee(FIRST_NAME2, LAST_NAME2, DEPARTMENT, SALARY2, DEPARTMENT_ID2);
         assertEquals(expected, actual);
     }
 
@@ -50,7 +50,7 @@ public class DepartmentServiceImplTest {
     @Test
     public void getEmployeeMinSumTest() {
         Employee actual = out.getEmployeeMinSum(DEPARTMENT);
-        Employee expected = new Employee(FIRST_NAME2, LAST_NAME2, DEPARTMENT, SALARY2, DEPARTMENT_ID2);
+        Employee expected = new Employee(FIRST_NAME, LAST_NAME, DEPARTMENT, SALARY, DEPARTMENT_ID);
         assertEquals(expected, actual);
     }
 
